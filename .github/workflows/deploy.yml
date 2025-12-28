@@ -32,8 +32,8 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci || npm install
-          # Ensure rollup optional dependencies are installed
-          npm install @rollup/rollup-linux-x64-gnu --no-save --force
+          # Explicitly install native bindings that npm sometimes misses (known npm bug with optional deps)
+          npm install @rollup/rollup-linux-x64-gnu @swc/core-linux-x64-gnu --no-save --force || true
 
       - name: Build
         run: npm run build
