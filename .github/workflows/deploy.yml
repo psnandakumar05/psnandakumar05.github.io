@@ -30,7 +30,10 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install --include=optional
+        run: |
+          npm ci || npm install
+          # Ensure rollup optional dependencies are installed
+          npm install @rollup/rollup-linux-x64-gnu --no-save --force
 
       - name: Build
         run: npm run build
