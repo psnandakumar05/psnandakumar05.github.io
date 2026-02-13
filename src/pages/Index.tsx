@@ -622,9 +622,12 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
                 Meet Your Mentor
               </h2>
+              <p className="text-2xl md:text-3xl font-semibold text-primary mb-3">
+                Nandakumar PS
+              </p>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Your guide on this transformative musical journey
               </p>
