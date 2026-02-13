@@ -626,7 +626,7 @@ const Index = () => {
                 Meet Your Mentor
               </h2>
               <p className="text-2xl md:text-3xl font-semibold text-primary mb-3">
-                Nandakumar PS
+                Nandakumar Srinivasan
               </p>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Your guide on this transformative musical journey
