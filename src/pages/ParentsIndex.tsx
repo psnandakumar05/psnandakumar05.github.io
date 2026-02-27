@@ -195,37 +195,44 @@ const ParentsIndex = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <FeatureCard
-              icon={Shield}
-              title="Discipline & Self-Control"
-              description="Regular flute practice instills patience, perseverance, and the habit of daily commitment in children."
-            />
-            <FeatureCard
-              icon={Brain}
-              title="Focus & Concentration"
-              description="Playing the flute improves attention span, memory retention, and academic performance in children."
-            />
-            <FeatureCard
-              icon={Palette}
-              title="Creativity & Expression"
-              description="Music unlocks creative thinking and gives children a powerful way to express emotions and ideas."
-            />
-            <FeatureCard
-              icon={Heart}
-              title="Cultural Connection"
-              description="Connect your child to India's rich Carnatic music heritage and the divine tradition of Lord Krishna's flute."
-            />
-            <FeatureCard
-              icon={Stethoscope}
-              title="Health Benefits"
-              description="Flute playing improves breath control, lung capacity, and provides natural stress relief for growing minds."
-            />
-            <FeatureCard
-              icon={Trophy}
-              title="Confidence Building"
-              description="Performing in front of others and mastering a skill builds self-esteem and stage confidence in children."
-            />
+          {/* Mobile Horizontal Scroll Carousel */}
+          <div className="md:hidden relative carousel-container">
+            <div
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-[10%] -mx-4 scrollbar-hide"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              <div className="snap-center shrink-0 w-[80%]">
+                <FeatureCard icon={Shield} title="Discipline & Self-Control" description="Regular flute practice instills patience, perseverance, and the habit of daily commitment in children." />
+              </div>
+              <div className="snap-center shrink-0 w-[80%]">
+                <FeatureCard icon={Brain} title="Focus & Concentration" description="Playing the flute improves attention span, memory retention, and academic performance in children." />
+              </div>
+              <div className="snap-center shrink-0 w-[80%]">
+                <FeatureCard icon={Palette} title="Creativity & Expression" description="Music unlocks creative thinking and gives children a powerful way to express emotions and ideas." />
+              </div>
+              <div className="snap-center shrink-0 w-[80%]">
+                <FeatureCard icon={Heart} title="Cultural Connection" description="Connect your child to India's rich Carnatic music heritage and the divine tradition of Lord Krishna's flute." />
+              </div>
+              <div className="snap-center shrink-0 w-[80%]">
+                <FeatureCard icon={Stethoscope} title="Health Benefits" description="Flute playing improves breath control, lung capacity, and provides natural stress relief for growing minds." />
+              </div>
+              <div className="snap-center shrink-0 w-[80%]">
+                <FeatureCard icon={Trophy} title="Confidence Building" description="Performing in front of others and mastering a skill builds self-esteem and stage confidence in children." />
+              </div>
+            </div>
+            <div className="flex justify-center gap-2 mt-4">
+              <span className="text-xs text-muted-foreground">← Swipe to explore →</span>
+            </div>
+          </div>
+
+          {/* Desktop Grid Layout */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <FeatureCard icon={Shield} title="Discipline & Self-Control" description="Regular flute practice instills patience, perseverance, and the habit of daily commitment in children." />
+            <FeatureCard icon={Brain} title="Focus & Concentration" description="Playing the flute improves attention span, memory retention, and academic performance in children." />
+            <FeatureCard icon={Palette} title="Creativity & Expression" description="Music unlocks creative thinking and gives children a powerful way to express emotions and ideas." />
+            <FeatureCard icon={Heart} title="Cultural Connection" description="Connect your child to India's rich Carnatic music heritage and the divine tradition of Lord Krishna's flute." />
+            <FeatureCard icon={Stethoscope} title="Health Benefits" description="Flute playing improves breath control, lung capacity, and provides natural stress relief for growing minds." />
+            <FeatureCard icon={Trophy} title="Confidence Building" description="Performing in front of others and mastering a skill builds self-esteem and stage confidence in children." />
           </div>
 
           <div className="mt-12 flex justify-center">
@@ -574,7 +581,25 @@ const ParentsIndex = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {/* Mobile Horizontal Scroll Carousel */}
+          <div className="md:hidden relative carousel-container">
+            <div
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-[10%] -mx-4 scrollbar-hide"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {TESTIMONIALS.map((t) => (
+                <div key={t.name} className="snap-center shrink-0 w-[80%]">
+                  <TestimonialCard {...t} />
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center gap-2 mt-4">
+              <span className="text-xs text-muted-foreground">← Swipe to explore →</span>
+            </div>
+          </div>
+
+          {/* Desktop Grid Layout */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {TESTIMONIALS.map((t) => (
               <TestimonialCard key={t.name} {...t} />
             ))}

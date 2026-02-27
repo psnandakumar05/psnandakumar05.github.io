@@ -200,27 +200,36 @@ const Corporate = () => {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                        <AudienceCard
-                            icon={Flame}
-                            title="High-Pressure Professionals"
-                            description="Corporate employees facing relentless deadlines and high-stress environments who need a creative escape."
-                        />
-                        <AudienceCard
-                            icon={Target}
-                            title="Leaders & Managers"
-                            description="Leaders and managers seeking mindful relaxation techniques to stay sharp and emotionally balanced."
-                        />
-                        <AudienceCard
-                            icon={Lightbulb}
-                            title="Creative Seekers"
-                            description="Professionals looking for a creative outlet beyond work — something meaningful and fulfilling."
-                        />
-                        <AudienceCard
-                            icon={Leaf}
-                            title="Balance Seekers"
-                            description="Anyone who wants to balance productivity with inner calm and build a sustainable self-care practice."
-                        />
+                    {/* Mobile Horizontal Scroll Carousel */}
+                    <div className="md:hidden relative carousel-container">
+                        <div
+                            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-[10%] -mx-4 scrollbar-hide"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                        >
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <AudienceCard icon={Flame} title="High-Pressure Professionals" description="Corporate employees facing relentless deadlines and high-stress environments who need a creative escape." />
+                            </div>
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <AudienceCard icon={Target} title="Leaders & Managers" description="Leaders and managers seeking mindful relaxation techniques to stay sharp and emotionally balanced." />
+                            </div>
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <AudienceCard icon={Lightbulb} title="Creative Seekers" description="Professionals looking for a creative outlet beyond work — something meaningful and fulfilling." />
+                            </div>
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <AudienceCard icon={Leaf} title="Balance Seekers" description="Anyone who wants to balance productivity with inner calm and build a sustainable self-care practice." />
+                            </div>
+                        </div>
+                        <div className="flex justify-center gap-2 mt-4">
+                            <span className="text-xs text-muted-foreground">← Swipe to explore →</span>
+                        </div>
+                    </div>
+
+                    {/* Desktop Grid Layout */}
+                    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                        <AudienceCard icon={Flame} title="High-Pressure Professionals" description="Corporate employees facing relentless deadlines and high-stress environments who need a creative escape." />
+                        <AudienceCard icon={Target} title="Leaders & Managers" description="Leaders and managers seeking mindful relaxation techniques to stay sharp and emotionally balanced." />
+                        <AudienceCard icon={Lightbulb} title="Creative Seekers" description="Professionals looking for a creative outlet beyond work — something meaningful and fulfilling." />
+                        <AudienceCard icon={Leaf} title="Balance Seekers" description="Anyone who wants to balance productivity with inner calm and build a sustainable self-care practice." />
                     </div>
 
                     <div className="mt-12 flex justify-center">
@@ -241,27 +250,36 @@ const Corporate = () => {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                        <FeatureCard
-                            icon={Zap}
-                            title="Stress at an All-Time High"
-                            description="Corporate stress levels are skyrocketing. It's time to take control of your well-being before burnout takes over."
-                        />
-                        <FeatureCard
-                            icon={Brain}
-                            title="Proven Anxiety Relief"
-                            description="Music is scientifically proven to reduce anxiety, lower cortisol levels, and improve focus and cognitive function."
-                        />
-                        <FeatureCard
-                            icon={Heart}
-                            title="Meditative & Culturally Rich"
-                            description="Carnatic flute offers a meditative, culturally rich way to unwind — deeply rooted in centuries of tradition."
-                        />
-                        <FeatureCard
-                            icon={Sparkles}
-                            title="A Lifelong Habit"
-                            description="Learning now helps you build a lifelong habit of relaxation and creativity that grows with you."
-                        />
+                    {/* Mobile Horizontal Scroll Carousel */}
+                    <div className="md:hidden relative carousel-container">
+                        <div
+                            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-[10%] -mx-4 scrollbar-hide"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                        >
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <FeatureCard icon={Zap} title="Stress at an All-Time High" description="Corporate stress levels are skyrocketing. It's time to take control of your well-being before burnout takes over." />
+                            </div>
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <FeatureCard icon={Brain} title="Proven Anxiety Relief" description="Music is scientifically proven to reduce anxiety, lower cortisol levels, and improve focus and cognitive function." />
+                            </div>
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <FeatureCard icon={Heart} title="Meditative & Culturally Rich" description="Carnatic flute offers a meditative, culturally rich way to unwind — deeply rooted in centuries of tradition." />
+                            </div>
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <FeatureCard icon={Sparkles} title="A Lifelong Habit" description="Learning now helps you build a lifelong habit of relaxation and creativity that grows with you." />
+                            </div>
+                        </div>
+                        <div className="flex justify-center gap-2 mt-4">
+                            <span className="text-xs text-muted-foreground">← Swipe to explore →</span>
+                        </div>
+                    </div>
+
+                    {/* Desktop Grid Layout */}
+                    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                        <FeatureCard icon={Zap} title="Stress at an All-Time High" description="Corporate stress levels are skyrocketing. It's time to take control of your well-being before burnout takes over." />
+                        <FeatureCard icon={Brain} title="Proven Anxiety Relief" description="Music is scientifically proven to reduce anxiety, lower cortisol levels, and improve focus and cognitive function." />
+                        <FeatureCard icon={Heart} title="Meditative & Culturally Rich" description="Carnatic flute offers a meditative, culturally rich way to unwind — deeply rooted in centuries of tradition." />
+                        <FeatureCard icon={Sparkles} title="A Lifelong Habit" description="Learning now helps you build a lifelong habit of relaxation and creativity that grows with you." />
                     </div>
 
                     <div className="mt-12 flex justify-center">
@@ -485,27 +503,36 @@ const Corporate = () => {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                        <FeatureCard
-                            icon={Briefcase}
-                            title="Built for Corporate Life"
-                            description="Designed specifically for corporate professionals — we understand your schedule, your stress, and your need for something meaningful."
-                        />
-                        <FeatureCard
-                            icon={Shield}
-                            title="Tradition Meets Modern Needs"
-                            description="Blends the ancient wisdom of Carnatic music tradition with modern stress-relief and mindfulness techniques."
-                        />
-                        <FeatureCard
-                            icon={GraduationCap}
-                            title="Expert Carnatic Teacher"
-                            description="Taught by an experienced Carnatic flute teacher with deep pedagogy and 17+ years of teaching experience."
-                        />
-                        <FeatureCard
-                            icon={Clock}
-                            title="Fits Busy Schedules"
-                            description="Practical, easy-to-follow steps designed to fit into your packed calendar — no overwhelm, just progress."
-                        />
+                    {/* Mobile Horizontal Scroll Carousel */}
+                    <div className="md:hidden relative carousel-container">
+                        <div
+                            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-[10%] -mx-4 scrollbar-hide"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                        >
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <FeatureCard icon={Briefcase} title="Built for Corporate Life" description="Designed specifically for corporate professionals — we understand your schedule, your stress, and your need for something meaningful." />
+                            </div>
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <FeatureCard icon={Shield} title="Tradition Meets Modern Needs" description="Blends the ancient wisdom of Carnatic music tradition with modern stress-relief and mindfulness techniques." />
+                            </div>
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <FeatureCard icon={GraduationCap} title="Expert Carnatic Teacher" description="Taught by an experienced Carnatic flute teacher with deep pedagogy and 17+ years of teaching experience." />
+                            </div>
+                            <div className="snap-center shrink-0 w-[80%]">
+                                <FeatureCard icon={Clock} title="Fits Busy Schedules" description="Practical, easy-to-follow steps designed to fit into your packed calendar — no overwhelm, just progress." />
+                            </div>
+                        </div>
+                        <div className="flex justify-center gap-2 mt-4">
+                            <span className="text-xs text-muted-foreground">← Swipe to explore →</span>
+                        </div>
+                    </div>
+
+                    {/* Desktop Grid Layout */}
+                    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                        <FeatureCard icon={Briefcase} title="Built for Corporate Life" description="Designed specifically for corporate professionals — we understand your schedule, your stress, and your need for something meaningful." />
+                        <FeatureCard icon={Shield} title="Tradition Meets Modern Needs" description="Blends the ancient wisdom of Carnatic music tradition with modern stress-relief and mindfulness techniques." />
+                        <FeatureCard icon={GraduationCap} title="Expert Carnatic Teacher" description="Taught by an experienced Carnatic flute teacher with deep pedagogy and 17+ years of teaching experience." />
+                        <FeatureCard icon={Clock} title="Fits Busy Schedules" description="Practical, easy-to-follow steps designed to fit into your packed calendar — no overwhelm, just progress." />
                     </div>
 
                     <div className="mt-12 flex justify-center">
@@ -624,7 +651,25 @@ const Corporate = () => {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    {/* Mobile Horizontal Scroll Carousel */}
+                    <div className="md:hidden relative carousel-container">
+                        <div
+                            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-[10%] -mx-4 scrollbar-hide"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                        >
+                            {TESTIMONIALS.map((t) => (
+                                <div key={t.name} className="snap-center shrink-0 w-[80%]">
+                                    <TestimonialCard {...t} />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex justify-center gap-2 mt-4">
+                            <span className="text-xs text-muted-foreground">← Swipe to explore →</span>
+                        </div>
+                    </div>
+
+                    {/* Desktop Grid Layout */}
+                    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                         {TESTIMONIALS.map((t) => (
                             <TestimonialCard key={t.name} {...t} />
                         ))}
