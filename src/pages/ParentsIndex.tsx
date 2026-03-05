@@ -38,12 +38,11 @@ import heroPhoto from "@/assets/hero-photo.jpg";
 import mentorCollage from "@/assets/collage.png";
 import aboutCourseBg from "@/assets/about-course-bg.jpg";
 import decorativeSvg from "@/assets/4.svg";
+import { useSheetConfig } from "@/hooks/useSheetConfig";
 
 // ==========================================
 // CONFIGURATION - Easy to update
 // ==========================================
-const MASTER_CLASS_DATE = "Feb 22, 2026";
-const MASTER_CLASS_TIME = "8:30 PM";
 const CHECKOUT_URL = "https://flute.bamboomelodyweavers.com/web/checkout/68ccd467e47d97739d32fbf2";
 const COURSE_URL = "https://flute.bamboomelodyweavers.com/services/bamboobees";
 
@@ -134,6 +133,11 @@ const CTAButton = ({ label = "Join the Master Class" }: { label?: string }) => (
 );
 
 const ParentsIndex = () => {
+  const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME, embed: EMBED_URL } = useSheetConfig(
+    "parent",
+    { date: "Feb 22, 2026", time: "8:30 PM", embed: "https://www.youtube.com/embed/O_gc16NIj1Q" }
+  );
+
   return (
     <div className="min-h-screen pb-32">
       {/* Hero Section */}
@@ -164,7 +168,7 @@ const ParentsIndex = () => {
             <div className="mt-12 max-w-3xl w-full">
               <div className="rounded-2xl overflow-hidden shadow-[var(--shadow-medium)] border-4 border-primary/20 aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/O_gc16NIj1Q"
+                  src={EMBED_URL}
                   title="Student performance video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

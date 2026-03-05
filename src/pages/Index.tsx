@@ -34,8 +34,14 @@ import mentorCollage from "@/assets/collage.png";
 import aboutCourseBg from "@/assets/about-course-bg.jpg";
 import decorativeSvg from "@/assets/4.svg";
 import decorativeSvg2 from "@/assets/1.svg";
+import { useSheetConfig } from "@/hooks/useSheetConfig";
 
 const Index = () => {
+  const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME } = useSheetConfig(
+    "general",
+    { date: "Mar 4, 2026", time: "8:30 PM", embed: "" }
+  );
+
   const masterclassUrl = "https://flute.bamboomelodyweavers.com/l/a9cf26127d";
   const courseUrl = "https://flute.bamboomelodyweavers.com/services/bamboobees";
 
@@ -52,6 +58,14 @@ const Index = () => {
             <h1 className="mb-4 text-4xl md:text-6xl font-bold text-foreground leading-tight">
               Breathe Music Into Your Life
             </h1>
+
+            <div className="mb-6 inline-flex flex-wrap items-center justify-center gap-2 bg-primary/10 border-2 border-primary/30 rounded-2xl px-6 py-4">
+              <span className="text-lg md:text-xl text-foreground font-medium">Next Carnatic Flute Master Class:</span>
+              <span className="text-2xl md:text-3xl font-bold text-primary">{MASTER_CLASS_DATE}</span>
+              <span className="text-lg md:text-xl text-foreground">at</span>
+              <span className="text-2xl md:text-3xl font-bold text-primary">{MASTER_CLASS_TIME}</span>
+            </div>
+
             <p className="mb-6 text-xl md:text-2xl text-muted-foreground max-w-3xl">
               Learn the Carnatic Flute from Anywhere
             </p>
