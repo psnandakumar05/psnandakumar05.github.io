@@ -39,7 +39,7 @@ import { useSheetConfig } from "@/hooks/useSheetConfig";
 const Index = () => {
   const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME } = useSheetConfig(
     "general",
-    { date: "Mar 4, 2026", time: "8:30 PM", embed: "" }
+    { date: "Mar 4, 2026", time: "8:30 PM", embed: "", caption: "" }
   );
 
   const masterclassUrl = "https://flute.bamboomelodyweavers.com/l/a9cf26127d";

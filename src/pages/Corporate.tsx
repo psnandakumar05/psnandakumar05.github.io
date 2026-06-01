@@ -138,9 +138,9 @@ const CTAButton = ({ label = "Reserve Your Spot Now" }: { label?: string }) => (
 );
 
 const Corporate = () => {
-    const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME, embed: EMBED_URL } = useSheetConfig(
+    const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME, embed: EMBED_URL, caption: VIDEO_CAPTION } = useSheetConfig(
         "corporate",
-        { date: "Mar 4, 2026", time: "8:30 PM", embed: "https://www.youtube.com/embed/O_gc16NIj1Q" }
+        { date: "Mar 4, 2026", time: "8:30 PM", embed: "https://www.youtube.com/embed/O_gc16NIj1Q", caption: "Watch our students bring melodies to life through the Carnatic flute." }
     );
 
     return (
@@ -182,7 +182,7 @@ const Corporate = () => {
                                 />
                             </div>
                             <p className="text-center text-sm text-muted-foreground mt-3 font-medium italic">
-                                Shriya, one of my students from USA, performing on stage after 3 years of learning.
+                                {VIDEO_CAPTION}
                             </p>
                         </div>
                     </div>

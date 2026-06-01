@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // ==========================================
 // GOOGLE SHEETS CMS URL
 // To set up:
-// 1. Create a Google Sheet with columns: page, date, time, embed
+// 1. Create a Google Sheet with columns: page, date, time, embed, caption
 // 2. File → Share → Publish to web → CSV → Publish
 // 3. Set VITE_SHEET_CSV_URL in your .env file or GitHub Secrets
 // ==========================================
@@ -13,6 +13,7 @@ interface SheetConfig {
     date: string;
     time: string;
     embed: string;
+    caption: string;
 }
 
 interface UseSheetConfigResult extends SheetConfig {
@@ -71,6 +72,7 @@ function parseCSV(csv: string): Record<string, SheetConfig> {
     const dateIdx = headers.indexOf("date");
     const timeIdx = headers.indexOf("time");
     const embedIdx = headers.indexOf("embed");
+    const captionIdx = headers.indexOf("caption");
 
     if (pageIdx === -1 || dateIdx === -1 || timeIdx === -1) return {};
 
@@ -83,6 +85,7 @@ function parseCSV(csv: string): Record<string, SheetConfig> {
                 date: cols[dateIdx] || "",
                 time: cols[timeIdx] || "",
                 embed: (embedIdx !== -1 ? extractEmbedSrc(cols[embedIdx] || "") : "") || "",
+                caption: (captionIdx !== -1 ? (cols[captionIdx] || "") : ""),
             };
         }
     }
@@ -157,6 +160,7 @@ export function useSheetConfig(
                     date: pageConfig.date || defaults.date,
                     time: pageConfig.time || defaults.time,
                     embed: pageConfig.embed || defaults.embed,
+                    caption: pageConfig.caption || defaults.caption,
                 });
             }
             setLoading(false);
