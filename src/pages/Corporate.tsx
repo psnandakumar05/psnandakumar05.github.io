@@ -154,8 +154,7 @@ const Corporate = () => {
                         <img src={logo} alt="Bamboo Melody Weavers" className="mb-8 h-32 w-32 md:h-40 md:w-40 drop-shadow-lg" />
 
                         <h1 className="mb-4 text-foreground leading-tight">
-                            <span className="block text-3xl md:text-4xl font-semibold text-primary mb-2">Unwind After Work</span>
-                            <span className="block text-3xl md:text-5xl font-bold">Discover the Carnatic Flute as Your Stress-Buster</span>
+                            <span className="block text-3xl md:text-5xl font-bold">De-stress with 'Flute Meditation 15-minutes a day..!'</span>
                         </h1>
 
                         <div className="mb-6 inline-flex flex-wrap items-center justify-center gap-2 bg-primary/10 border-2 border-primary/30 rounded-2xl px-6 py-4">
