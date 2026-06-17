@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import ParentsIndex from "./pages/ParentsIndex";
 import Corporate from "./pages/Corporate";
 import NotFound from "./pages/NotFound";
+import ThankYou from "./pages/ThankYou";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/parent" element={<ParentsIndex />} />
           <Route path="/corporate" element={<Corporate />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
