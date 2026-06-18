@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 
@@ -5,6 +6,22 @@ const WHATSAPP_JOIN_LINK =
     "https://chat.whatsapp.com/GiVSoEuxVeTLqyAVKj7DwJ?s=sw&p=a&ilr=1";
 
 const ThankYou = () => {
+    useEffect(() => {
+        const win = window as any;
+        !function(f: any,b: any,e: any,v: any,n?: any,t?: any,s?: any)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        if(s && s.parentNode) s.parentNode.insertBefore(t,s);
+        else document.head.appendChild(t);}(win, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        win.fbq('init', '907405475136035');
+        win.fbq('track', 'PageView');
+        win.fbq('track', 'Lead'); 
+    }, []);
+
     return (
         <div className="min-h-screen overflow-x-hidden">
             {/* Hero Section - title area */}
@@ -26,9 +43,12 @@ const ThankYou = () => {
                             </h1>
                         </div>
 
-                        <p className="mb-6 text-xs md:text-sm text-foreground/80 max-w-lg italic leading-relaxed">
-                            Watch the short video — then take a tiny test to see if the bamboo flute is your path to calm.
-                        </p>
+                        <noscript>
+                            <img height="1" width="1" style={{ display: 'none' }}
+                                src="https://www.facebook.com/tr?id=907405475136035&ev=PageView&noscript=1"
+                                alt=""
+                            />
+                        </noscript>
                     </div>
                 </div>
             </section>
