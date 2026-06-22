@@ -240,53 +240,50 @@ const ParentsIndex = () => {
               </div>
 
               {/* Trustpilot Rating */}
-              <div className="mt-10 md:mt-12 flex flex-col items-center md:items-start w-full">
+              <div className="mt-6 md:mt-8 flex flex-col items-center md:items-start w-full">
                 <a
                   href="https://www.trustpilot.com/review/bamboomelodyweavers.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center md:items-start gap-1.5 group mb-4 md:mb-0"
+                  className="flex flex-col items-center md:items-start gap-2.5 group mb-4 md:mb-0"
                 >
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl md:text-3xl font-bold text-white">
-                      {isLoading ? "..." : trustScore}
-                    </span>
-                    <span className="text-[15px] md:text-base text-white/60 font-medium tracking-wide">
-                      Rated on Trustpilot
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5">
+                    <span className="text-xl md:text-2xl font-bold text-white tracking-wide">Excellent</span>
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: 5 }).map((_, i) => {
+                        const currentStar = i + 1;
+                        const score = Number(trustScore) || 0;
+                        let fillPercentage = 0;
+                        if (score >= currentStar) fillPercentage = 100;
+                        else if (score > i && score < currentStar) fillPercentage = Math.round((score - i) * 100);
+
+                        return (
+                          <div key={i} className="bg-[#00b67a] w-7 h-7 md:w-8 md:h-8 rounded-[3px] flex items-center justify-center overflow-hidden relative">
+                            {fillPercentage < 100 && (
+                              <div 
+                                className="absolute right-0 top-0 bottom-0 bg-[#333333] md:bg-[#e5e5e5]" 
+                                style={{ width: `${100 - fillPercentage}%` }} 
+                              />
+                            )}
+                            <svg className="w-4 h-4 md:w-5 md:h-5 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                            </svg>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <span className="text-[15px] md:text-base text-white/90 font-medium">
+                      {isLoading ? "..." : trustScore} out of 5
                     </span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => {
-                      const currentStar = i + 1;
-                      const score = Number(trustScore) || 0;
-                      
-                      if (score >= currentStar) {
-                        return (
-                          <svg key={i} className="w-6 h-6 md:w-8 md:h-8 text-[#e8a932]" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                          </svg>
-                        );
-                      } else if (score > i && score < currentStar) {
-                        const fillPercentage = Math.round((score - i) * 100);
-                        return (
-                          <svg key={i} className="w-6 h-6 md:w-8 md:h-8" viewBox="0 0 24 24">
-                            <defs>
-                              <linearGradient id={`partialStar-${i}`}>
-                                <stop offset={`${fillPercentage}%`} stopColor="#e8a932" />
-                                <stop offset={`${fillPercentage}%`} stopColor="#e8a932" stopOpacity="0.3" />
-                              </linearGradient>
-                            </defs>
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill={`url(#partialStar-${i})`} />
-                          </svg>
-                        );
-                      } else {
-                        return (
-                          <svg key={i} className="w-6 h-6 md:w-8 md:h-8 text-[#e8a932] opacity-30" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                          </svg>
-                        );
-                      }
-                    })}
+                  <div className="flex items-center justify-center md:justify-start gap-1.5 text-[15px] text-white/80 mt-1">
+                    <span>Ratings on</span>
+                    <div className="flex items-center gap-1 text-white font-bold text-[17px]">
+                      <svg className="w-6 h-6 text-[#00b67a] drop-shadow-md" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                      </svg>
+                      Trustpilot
+                    </div>
                   </div>
                 </a>
 
