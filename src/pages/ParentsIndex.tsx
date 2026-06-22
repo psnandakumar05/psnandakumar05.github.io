@@ -136,6 +136,56 @@ const CTAButton = ({ label = "Join the Master Class" }: { label?: string }) => (
   </Button>
 );
 
+const TrustpilotBadge = ({ trustScore, isLoading, alignCenter = false }: { trustScore: string | null, isLoading: boolean, alignCenter?: boolean }) => {
+  return (
+    <a
+      href="https://www.trustpilot.com/review/bamboomelodyweavers.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex flex-col gap-2.5 group ${alignCenter ? "items-center" : "items-center md:items-start"}`}
+    >
+      <div className={`flex flex-wrap items-center gap-2.5 ${alignCenter ? "justify-center" : "justify-center md:justify-start"}`}>
+        <span className="text-xl md:text-2xl font-bold text-white tracking-wide">Excellent</span>
+        <div className="flex items-center gap-1">
+          {Array.from({ length: 5 }).map((_, i) => {
+            const currentStar = i + 1;
+            const score = Number(trustScore) || 0;
+            let fillPercentage = 0;
+            if (score >= currentStar) fillPercentage = 100;
+            else if (score > i && score < currentStar) fillPercentage = Math.round((score - i) * 100);
+
+            return (
+              <div key={i} className="bg-[#00b67a] w-7 h-7 md:w-8 md:h-8 rounded-[3px] flex items-center justify-center overflow-hidden relative">
+                {fillPercentage < 100 && (
+                  <div 
+                    className="absolute right-0 top-0 bottom-0 bg-[#333333] md:bg-[#e5e5e5]" 
+                    style={{ width: `${100 - fillPercentage}%` }} 
+                  />
+                )}
+                <svg className="w-4 h-4 md:w-5 md:h-5 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              </div>
+            );
+          })}
+        </div>
+        <span className="text-[15px] md:text-base text-white/90 font-medium">
+          {isLoading ? "..." : trustScore} out of 5
+        </span>
+      </div>
+      <div className={`flex items-center gap-1.5 text-[15px] text-white/80 mt-1 ${alignCenter ? "justify-center" : "justify-center md:justify-start"}`}>
+        <span>Ratings on</span>
+        <div className="flex items-center gap-1 text-white font-bold text-[17px]">
+          <svg className="w-6 h-6 text-[#00b67a] drop-shadow-md" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+          Trustpilot
+        </div>
+      </div>
+    </a>
+  );
+};
+
 const ParentsIndex = () => {
   const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME, embed: EMBED_URL, caption: VIDEO_CAPTION } = useSheetConfig(
     "parent",
@@ -241,51 +291,9 @@ const ParentsIndex = () => {
 
               {/* Trustpilot Rating */}
               <div className="mt-6 md:mt-8 flex flex-col items-center md:items-start w-full">
-                <a
-                  href="https://www.trustpilot.com/review/bamboomelodyweavers.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center md:items-start gap-2.5 group mb-4 md:mb-0"
-                >
-                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5">
-                    <span className="text-xl md:text-2xl font-bold text-white tracking-wide">Excellent</span>
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: 5 }).map((_, i) => {
-                        const currentStar = i + 1;
-                        const score = Number(trustScore) || 0;
-                        let fillPercentage = 0;
-                        if (score >= currentStar) fillPercentage = 100;
-                        else if (score > i && score < currentStar) fillPercentage = Math.round((score - i) * 100);
-
-                        return (
-                          <div key={i} className="bg-[#00b67a] w-7 h-7 md:w-8 md:h-8 rounded-[3px] flex items-center justify-center overflow-hidden relative">
-                            {fillPercentage < 100 && (
-                              <div 
-                                className="absolute right-0 top-0 bottom-0 bg-[#333333] md:bg-[#e5e5e5]" 
-                                style={{ width: `${100 - fillPercentage}%` }} 
-                              />
-                            )}
-                            <svg className="w-4 h-4 md:w-5 md:h-5 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                            </svg>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <span className="text-[15px] md:text-base text-white/90 font-medium">
-                      {isLoading ? "..." : trustScore} out of 5
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-center md:justify-start gap-1.5 text-[15px] text-white/80 mt-1">
-                    <span>Ratings on</span>
-                    <div className="flex items-center gap-1 text-white font-bold text-[17px]">
-                      <svg className="w-6 h-6 text-[#00b67a] drop-shadow-md" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                      </svg>
-                      Trustpilot
-                    </div>
-                  </div>
-                </a>
+                <div className="mb-4 md:mb-0">
+                  <TrustpilotBadge trustScore={trustScore} isLoading={isLoading} />
+                </div>
 
                 {/* Mobile Title Image (Shown only on mobile, below Trustpilot) */}
                 <div className="block md:hidden w-full relative z-0 flex justify-center mt-6 -mb-6 md:mb-0">
@@ -465,19 +473,8 @@ const ParentsIndex = () => {
               </p>
             </div>
 
-            <div className="mt-4 p-4 bg-black/30 backdrop-blur-sm rounded-lg border border-gold/30 text-center">
-              <p className="text-sm text-white font-semibold mb-3">⭐ Trusted on Trustpilot</p>
-              <div
-                className="trustpilot-widget"
-                data-locale="en-US"
-                data-template-id="56278e9abfbbba0bdcd568bc"
-                data-businessunit-id="694e7e0873b68c1c75a390fb"
-                data-style-height="52px"
-                data-style-width="100%"
-                data-token="8640999c-e706-45b9-8ac8-01bda142f350"
-              >
-                <a href="https://www.trustpilot.com/review/bamboomelodyweavers.com" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">View our Trustpilot reviews</a>
-              </div>
+            <div className="mt-6 p-6 bg-black/40 backdrop-blur-md rounded-xl border border-white/10 flex justify-center">
+              <TrustpilotBadge trustScore={trustScore} isLoading={isLoading} alignCenter={true} />
             </div>
 
             <div className="mt-6 p-5 bg-gold/20 backdrop-blur-sm rounded-lg border-2 border-gold/40">
@@ -579,19 +576,8 @@ const ParentsIndex = () => {
                 </p>
               </div>
 
-              <div className="mt-4 p-4 bg-black/30 backdrop-blur-sm rounded-lg border border-gold/30 text-center">
-                <p className="text-sm text-white font-semibold mb-3">⭐ Trusted on Trustpilot</p>
-                <div
-                  className="trustpilot-widget"
-                  data-locale="en-US"
-                  data-template-id="56278e9abfbbba0bdcd568bc"
-                  data-businessunit-id="694e7e0873b68c1c75a390fb"
-                  data-style-height="52px"
-                  data-style-width="100%"
-                  data-token="8640999c-e706-45b9-8ac8-01bda142f350"
-                >
-                  <a href="https://www.trustpilot.com/review/bamboomelodyweavers.com" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">View our Trustpilot reviews</a>
-                </div>
+              <div className="mt-8 p-6 bg-black/40 backdrop-blur-md rounded-xl border border-white/10 flex justify-center">
+                <TrustpilotBadge trustScore={trustScore} isLoading={isLoading} alignCenter={true} />
               </div>
 
               <div className="mt-6 p-5 bg-gold/20 backdrop-blur-sm rounded-lg border-2 border-gold/40">
