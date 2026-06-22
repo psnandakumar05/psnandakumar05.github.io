@@ -38,7 +38,10 @@ import heroPhoto from "@/assets/hero-photo.jpg";
 import mentorCollage from "@/assets/collage.png";
 import aboutCourseBg from "@/assets/about-course-bg.jpg";
 import decorativeSvg from "@/assets/4.svg";
+import titleSvg from "@/assets/title.svg";
+import textureBg from "@/assets/Texture.png";
 import { useSheetConfig } from "@/hooks/useSheetConfig";
+import { useTrustpilotData } from "@/hooks/useTrustpilotData";
 
 // ==========================================
 // CONFIGURATION - Easy to update
@@ -138,47 +141,175 @@ const ParentsIndex = () => {
     { date: "Feb 22, 2026", time: "8:30 PM", embed: "https://www.youtube.com/embed/O_gc16NIj1Q", caption: "Watch our students bring melodies to life through the Carnatic flute." }
   );
 
+  const { trustScore, stars, totalReviews, isLoading } = useTrustpilotData(
+    "56278e9abfbbba0bdcd568bc",
+    "694e7e0873b68c1c75a390fb"
+  );
+
   return (
     <div className="min-h-screen pb-32">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-warm-beige to-gold/20">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNjNGEyNTMiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzMuMzEgMCA2LTIuNjkgNi02cy0yLjY5LTYtNi02LTYgMi42OS02IDYgMi42OSA2IDYgNiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
+      {/* Hero Section - Dark two-column layout */}
+      <section className="relative overflow-hidden flex flex-col min-h-[90vh] 2xl:min-h-[850px] justify-center">
+        {/* Texture background */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${textureBg})` }}
+        />
+        {/* Gradient overlay: Solid black on top/left, fading to transparent on bottom/right */}
+        <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/90 via-[35%] md:via-black/80 md:via-[50%] to-transparent to-[75%] md:to-black/40" />
 
-        <div className="container relative mx-auto px-4 py-16 md:py-24">
-          <div className="flex flex-col items-center text-center">
-            <img src={logo} alt="Bamboo Melody Weavers" className="mb-8 h-32 w-32 md:h-40 md:w-40 drop-shadow-lg" />
+        {/* Right Background Image - Taller and wider */}
+        <div className="absolute right-0 bottom-0 top-0 w-[70%] md:w-[65%] lg:w-[60%] hidden md:block pointer-events-none z-0">
+          <img
+            src={titleSvg}
+            alt="Carnatic Flute Teacher"
+            className="absolute right-20 bottom-0 h-full w-auto max-w-none object-contain object-bottom origin-bottom-right md:scale-105 lg:scale-110"
+          />
+        </div>
 
-            <h1 className="mb-4 text-4xl md:text-6xl font-bold text-foreground leading-tight">
-              Give Your Child the Timeless Gift of Music
-            </h1>
-
-            <div className="mb-6 inline-flex flex-wrap items-center justify-center gap-2 bg-primary/10 border-2 border-primary/30 rounded-2xl px-6 py-4">
-              <span className="text-lg md:text-xl text-foreground font-medium">Next Carnatic Flute Master Class:</span>
-              <span className="text-2xl md:text-3xl font-bold text-primary">{MASTER_CLASS_DATE}</span>
-              <span className="text-lg md:text-xl text-foreground">at</span>
-              <span className="text-2xl md:text-3xl font-bold text-primary">{MASTER_CLASS_TIME}</span>
-            </div>
-
-            <p className="mb-12 text-lg md:text-xl text-foreground/80 max-w-2xl italic leading-relaxed">
-              "Parents, have you ever wondered what gift lasts longer than toys or gadgets? A gift that shapes your child's mind and soul…"
-            </p>
-
-            <CTAButton />
-
-            <div className="mt-12 max-w-3xl w-full">
-              <div className="rounded-2xl overflow-hidden shadow-[var(--shadow-medium)] border-4 border-primary/20 aspect-video">
-                <iframe
-                  src={EMBED_URL}
-                  title="Student performance video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
+        {/* Content wrapper */}
+        <div className="relative z-10 container mx-auto px-4 pt-8 pb-0 flex flex-col w-full flex-1">
+          <div className="w-full flex-1">
+            {/* Left Column - Text */}
+            <div className="flex-1 flex flex-col items-center md:items-start justify-start text-center md:text-left px-0 md:pl-12 lg:pl-16 md:pr-8 lg:pr-12 pb-0 md:pb-12 md:max-w-xl lg:max-w-2xl mt-4 md:mt-0">
+              {/* Logo - Top Left */}
+              <div className="flex items-center gap-3 mb-10 md:mb-24 self-center md:self-start">
+                <img src={logo} alt="Bamboo Melody Weavers" className="h-10 w-10 md:h-12 md:w-12 drop-shadow-lg" />
+                <span className="text-white font-semibold text-base md:text-lg tracking-wide">Bamboo Melody Weavers</span>
               </div>
-              <p className="text-center text-sm text-muted-foreground mt-3 font-medium italic">
-                {VIDEO_CAPTION}
+
+              {/* Main heading */}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-white">
+                Give Your Child the{" "}
+                <span className="text-primary">Timeless Gift</span>{" "}
+                of Music
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-[15px] md:text-base text-white/80 max-w-md mb-8 leading-relaxed">
+                Bamboo Melody Weavers Program — begin your child's journey of Carnatic Flute Learning, step by step.
               </p>
+
+              {/* Date badge */}
+              <div className="mb-8 w-full max-w-[340px] md:max-w-none md:w-auto p-[2px] rounded-2xl md:rounded-xl bg-gradient-to-r from-[#8b4513] via-white/80 to-[#8b4513] shadow-xl">
+                <div className="flex flex-col items-center md:items-start gap-1 md:gap-1.5 bg-[#0a0a0a]/90 backdrop-blur-md rounded-[14px] md:rounded-[10px] px-5 py-4 md:px-5 text-center md:text-left h-full">
+                  <span className="text-[15px] md:text-sm text-white/90 font-medium">Next Master Class</span>
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                    <span className="text-xl md:text-2xl font-black text-primary tracking-wide drop-shadow-md">{MASTER_CLASS_DATE}</span>
+                    <span className="text-lg md:text-xl text-white/60 font-medium">at</span>
+                    <span className="text-xl md:text-2xl font-black text-primary tracking-wide drop-shadow-md">{MASTER_CLASS_TIME}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 w-full max-w-[340px] md:max-w-none">
+                <Button
+                  className="w-[85%] md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground text-[15px] md:text-base px-6 py-5 md:py-6 rounded-full shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-medium)] transition-all duration-300 hover:scale-105 font-bold"
+                  onClick={() => window.open(CHECKOUT_URL, "_blank")}
+                >
+                  Join the Master Class
+                </Button>
+                <button
+                  className="flex items-center justify-center gap-3 text-white/90 hover:text-white transition-colors duration-200 group w-full md:w-auto py-2"
+                  onClick={() => {
+                    const el = document.getElementById("parents-video");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  <span className="w-12 h-12 md:w-10 md:h-10 rounded-full bg-[#1a1a1a] md:bg-primary/20 border border-white/10 md:border-primary/40 flex items-center justify-center group-hover:bg-primary/30 transition-all duration-200 shadow-lg">
+                    <svg className="w-4 h-4 md:w-4 md:h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                    </svg>
+                  </span>
+                  <span className="font-semibold text-[15px] md:text-sm tracking-wide">Watch Video</span>
+                </button>
+              </div>
+
+              {/* Trustpilot Rating */}
+              <div className="mt-10 md:mt-12 flex flex-col items-center md:items-start w-full">
+                <a
+                  href="https://www.trustpilot.com/review/bamboomelodyweavers.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center md:items-start gap-1.5 group mb-4 md:mb-0"
+                >
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl md:text-3xl font-bold text-white">
+                      {isLoading ? "..." : trustScore}
+                    </span>
+                    <span className="text-[15px] md:text-base text-white/60 font-medium tracking-wide">
+                      Rated on Trustpilot
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: 5 }).map((_, i) => {
+                      const currentStar = i + 1;
+                      const score = Number(trustScore) || 0;
+                      
+                      if (score >= currentStar) {
+                        return (
+                          <svg key={i} className="w-6 h-6 md:w-8 md:h-8 text-[#e8a932]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                          </svg>
+                        );
+                      } else if (score > i && score < currentStar) {
+                        const fillPercentage = Math.round((score - i) * 100);
+                        return (
+                          <svg key={i} className="w-6 h-6 md:w-8 md:h-8" viewBox="0 0 24 24">
+                            <defs>
+                              <linearGradient id={`partialStar-${i}`}>
+                                <stop offset={`${fillPercentage}%`} stopColor="#e8a932" />
+                                <stop offset={`${fillPercentage}%`} stopColor="#e8a932" stopOpacity="0.3" />
+                              </linearGradient>
+                            </defs>
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill={`url(#partialStar-${i})`} />
+                          </svg>
+                        );
+                      } else {
+                        return (
+                          <svg key={i} className="w-6 h-6 md:w-8 md:h-8 text-[#e8a932] opacity-30" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                          </svg>
+                        );
+                      }
+                    })}
+                  </div>
+                </a>
+
+                {/* Mobile Title Image (Shown only on mobile, below Trustpilot) */}
+                <div className="block md:hidden w-full relative z-0 flex justify-center mt-6 -mb-6 md:mb-0">
+                  <img
+                    src={titleSvg}
+                    alt="Carnatic Flute Teacher"
+                    className="w-[110%] max-w-[400px] h-auto object-contain object-bottom pointer-events-none drop-shadow-2xl"
+                  />
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom edge - match next section background for seamless transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-br from-background via-warm-beige to-gold/20 pointer-events-none" />
+      </section>
+
+      {/* Video Section */}
+      <section id="parents-video" className="py-12 bg-gradient-to-br from-background via-warm-beige to-gold/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="rounded-2xl overflow-hidden shadow-[var(--shadow-medium)] border-4 border-primary/20 aspect-video">
+              <iframe
+                src={EMBED_URL}
+                title="Student performance video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+            <p className="text-center text-sm text-muted-foreground mt-3 font-medium italic">
+              {VIDEO_CAPTION}
+            </p>
           </div>
         </div>
       </section>
