@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { FeatureCard } from "@/components/FeatureCard";
 import { CountdownTimer } from "@/components/CountdownTimer";
@@ -145,6 +146,18 @@ const ParentsIndex = () => {
     "56278e9abfbbba0bdcd568bc",
     "694e7e0873b68c1c75a390fb"
   );
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Trigger once on mount to set initial state
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen pb-32">
@@ -833,7 +846,7 @@ const ParentsIndex = () => {
       </section>
 
       {/* Sticky Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-orange-light/90 via-orange-soft/90 to-orange-light/90 shadow-[var(--shadow-glow)] border-t border-primary/30 z-50 backdrop-blur-sm">
+      <footer className={`fixed bottom-0 left-0 right-0 bg-gradient-to-r from-orange-light/90 via-orange-soft/90 to-orange-light/90 shadow-[var(--shadow-glow)] border-t border-primary/30 z-50 backdrop-blur-sm transition-transform duration-500 ease-in-out ${!scrolled ? 'translate-y-full md:translate-y-0' : 'translate-y-0'}`}>
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
