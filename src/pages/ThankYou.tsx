@@ -7,9 +7,9 @@ const WHATSAPP_JOIN_LINK =
     "https://chat.whatsapp.com/FWv80vuQZLUDFtpBFIJfka?s=cl&p=a&ilr=1";
 
 const ThankYou = () => {
-    const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME } = useSheetConfig(
+    const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME, embed: VIDEO_EMBED_URL } = useSheetConfig(
         "thankyou",
-        { date: "July 19, 2026", time: "8:30 PM", embed: "", caption: "" }
+        { date: "July 19, 2026", time: "8:30 PM", embed: "https://www.youtube.com/embed/GAElTSbrjFM?si=XaAvybcZfDWNlSIz", caption: "" }
     );
 
     useEffect(() => {
@@ -74,7 +74,7 @@ const ThankYou = () => {
                             <iframe
                                 width="560"
                                 height="315"
-                                src="https://www.youtube.com/embed/GAElTSbrjFM?si=XaAvybcZfDWNlSIz"
+                                src={VIDEO_EMBED_URL}
                                 title="YouTube video player"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
