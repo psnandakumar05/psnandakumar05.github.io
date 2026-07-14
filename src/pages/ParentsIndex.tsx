@@ -313,7 +313,7 @@ const ParentsIndex = () => {
       </section>
 
       {/* Video Section */}
-      <section id="parents-video" className="py-12 bg-gradient-to-br from-background via-warm-beige to-gold/20">
+      <section id="parents-video" className="py-16 md:py-20 bg-gradient-to-br from-background via-warm-beige to-gold/20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="rounded-2xl overflow-hidden shadow-[var(--shadow-medium)] border-4 border-primary/20 aspect-video">

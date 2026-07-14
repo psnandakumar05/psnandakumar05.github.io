@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
+import { useSheetConfig } from "@/hooks/useSheetConfig";
 
 const WHATSAPP_JOIN_LINK =
-    "https://chat.whatsapp.com/GiVSoEuxVeTLqyAVKj7DwJ?s=sw&p=a&ilr=1";
+    "https://chat.whatsapp.com/FWv80vuQZLUDFtpBFIJfka?s=cl&p=a&ilr=1";
 
 const ThankYou = () => {
+    const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME } = useSheetConfig(
+        "thankyou",
+        { date: "July 19, 2026", time: "8:30 PM", embed: "", caption: "" }
+    );
+
     useEffect(() => {
         const win = window as any;
         (function(f: any,b: any,e: any,v: any,n?: any,t?: any,s?: any)
@@ -30,18 +36,11 @@ const ThankYou = () => {
 
                 <div className="container relative mx-auto px-4 pt-10 md:pt-8 pb-16 md:pb-16">
                     <div className="flex flex-col items-center text-center">
-                        <div className="flex items-center justify-center gap-3 mb-3">
-                            <img
-                                src={logo}
-                                alt="Bamboo Melody Weavers"
-                                className="hidden md:block md:h-16 md:w-16 drop-shadow-lg flex-shrink-0"
-                            />
-                            <h1 className="text-foreground leading-tight">
-                                <span className="block text-xl md:text-2xl font-bold">
-                                    Thank you for registering for the World Music Day free master class..!
-                                </span>
-                            </h1>
-                        </div>
+                        <h1 className="text-foreground leading-tight mb-3">
+                            <span className="block text-xl md:text-2xl font-bold">
+                                Thank you for registering..! Do not miss the Free Flute Master Class..!
+                            </span>
+                        </h1>
 
                         <noscript>
                             <img height="1" width="1" style={{ display: 'none' }}
@@ -65,6 +64,12 @@ const ThankYou = () => {
                 {/* Video overlapping into this section from above */}
                 <div className="container mx-auto px-4">
                     <div className="max-w-xl mx-auto relative" style={{ marginTop: '-10rem' }}>
+                        {/* Floating logo badge - desktop only */}
+                        <img
+                            src={logo}
+                            alt="Bamboo Melody Weavers"
+                            className="hidden xl:block absolute -left-60 -top-10 h-40 w-40 rounded-full bg-white p-1.5 drop-shadow-xl z-10"
+                        />
                         <div className="rounded-xl overflow-hidden aspect-video" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.3)' }}>
                             <iframe
                                 width="560"
@@ -110,6 +115,16 @@ const ThankYou = () => {
                             </svg>
                             Join My Whatsapp Group →
                         </Button>
+                    </div>
+
+                    {/* Next Master Class Date/Time */}
+                    <div className="mt-8 md:mt-6 flex justify-center">
+                        <div className="inline-flex flex-wrap items-center justify-center gap-2 border-2 border-primary/40 rounded-2xl px-6 py-4">
+                            <span className="text-lg md:text-xl text-white/90 font-medium">The next master class is on</span>
+                            <span className="text-2xl md:text-3xl font-bold text-primary">{MASTER_CLASS_DATE}</span>
+                            <span className="text-lg md:text-xl text-white/70">at</span>
+                            <span className="text-2xl md:text-3xl font-bold text-primary">{MASTER_CLASS_TIME}</span>
+                        </div>
                     </div>
                 </div>
             </section>
