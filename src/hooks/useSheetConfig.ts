@@ -14,6 +14,7 @@ interface SheetConfig {
     time: string;
     embed: string;
     caption: string;
+    link?: string;
 }
 
 interface UseSheetConfigResult extends SheetConfig {
@@ -73,8 +74,9 @@ function parseCSV(csv: string): Record<string, SheetConfig> {
     const timeIdx = headers.indexOf("time");
     const embedIdx = headers.indexOf("embed");
     const captionIdx = headers.indexOf("caption");
+    const linkIdx = headers.indexOf("link");
 
-    if (pageIdx === -1 || dateIdx === -1 || timeIdx === -1) return {};
+    if (pageIdx === -1) return {};
 
     const result: Record<string, SheetConfig> = {};
     for (let i = 1; i < lines.length; i++) {
@@ -82,10 +84,11 @@ function parseCSV(csv: string): Record<string, SheetConfig> {
         const page = cols[pageIdx]?.toLowerCase();
         if (page) {
             result[page] = {
-                date: cols[dateIdx] || "",
-                time: cols[timeIdx] || "",
+                date: (dateIdx !== -1 ? cols[dateIdx] : "") || "",
+                time: (timeIdx !== -1 ? cols[timeIdx] : "") || "",
                 embed: (embedIdx !== -1 ? extractEmbedSrc(cols[embedIdx] || "") : "") || "",
                 caption: (captionIdx !== -1 ? (cols[captionIdx] || "") : ""),
+                link: (linkIdx !== -1 ? (cols[linkIdx] || "") : ""),
             };
         }
     }
@@ -141,6 +144,7 @@ export function useSheetConfig(
     const [config, setConfig] = useState<SheetConfig>(() => {
         const cached = getCachedConfig(page);
         if (cached?.date && cached?.time) return cached;
+        if (cached?.link) return cached;
         return defaults;
     });
     const [loading, setLoading] = useState(!!SHEET_CSV_URL);
@@ -161,6 +165,7 @@ export function useSheetConfig(
                     time: pageConfig.time || defaults.time,
                     embed: pageConfig.embed || defaults.embed,
                     caption: pageConfig.caption || defaults.caption,
+                    link: pageConfig.link || defaults.link,
                 });
             }
             setLoading(false);

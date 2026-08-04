@@ -8,6 +8,7 @@ import ParentsIndex from "./pages/ParentsIndex";
 import Corporate from "./pages/Corporate";
 import NotFound from "./pages/NotFound";
 import ThankYou from "./pages/ThankYou";
+import JoinRedirect from "./pages/JoinRedirect";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/parent" element={<ParentsIndex />} />
           <Route path="/corporate" element={<Corporate />} />
           <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/join" element={<JoinRedirect />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
