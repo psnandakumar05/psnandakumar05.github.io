@@ -4,7 +4,7 @@ import logo from "@/assets/logo.png";
 import { useSheetConfig } from "@/hooks/useSheetConfig";
 
 const WHATSAPP_JOIN_LINK =
-    "https://chat.whatsapp.com/FWv80vuQZLUDFtpBFIJfka?s=cl&p=a&ilr=1";
+    "https://chat.whatsapp.com/CqwAnW4XMjHHN7NyxFULZh";
 
 const ThankYou = () => {
     const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME, embed: VIDEO_EMBED_URL } = useSheetConfig(
