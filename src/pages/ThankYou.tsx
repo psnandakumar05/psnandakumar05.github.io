@@ -3,13 +3,12 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 import { useSheetConfig } from "@/hooks/useSheetConfig";
 
-const WHATSAPP_JOIN_LINK =
-    "https://chat.whatsapp.com/CqwAnW4XMjHHN7NyxFULZh";
+
 
 const ThankYou = () => {
-    const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME, embed: VIDEO_EMBED_URL } = useSheetConfig(
+    const { date: MASTER_CLASS_DATE, time: MASTER_CLASS_TIME, embed: VIDEO_EMBED_URL, link: WHATSAPP_JOIN_LINK } = useSheetConfig(
         "thankyou",
-        { date: "July 19, 2026", time: "8:30 PM", embed: "https://www.youtube.com/embed/GAElTSbrjFM?si=XaAvybcZfDWNlSIz", caption: "" }
+        { date: "July 19, 2026", time: "8:30 PM", embed: "https://www.youtube.com/embed/GAElTSbrjFM?si=XaAvybcZfDWNlSIz", caption: "", link: "" }
     );
 
     useEffect(() => {
